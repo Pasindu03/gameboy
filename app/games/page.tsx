@@ -1,10 +1,10 @@
 import React from 'react';
-import RetroGameHome from "@/components/retro-game-home";
+import Games from "@/components/games";
 
 const Page = () => {
     return (
         <main>
-            <RetroGameHome />
+            <Games />
         </main>
     );
 };

@@ -1,10 +1,10 @@
 import React from 'react';
-import RetroGameHome from "@/components/retro-game-home";
+import TetrisGame from "@/components/tetris-game";
 
 const Page = () => {
     return (
         <main>
-            <RetroGameHome />
+            <TetrisGame />
         </main>
     );
 };
