@@ -1,5 +1,5 @@
 import React from 'react';
-import PacManGame from "@/components/pacman-game";
+import PacManGame from "@/components/games/pacman-game";
 
 const Page = () => {
     return (

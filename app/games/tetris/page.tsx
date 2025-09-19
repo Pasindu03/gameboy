@@ -1,5 +1,5 @@
 import React from 'react';
-import TetrisGame from "@/components/tetris-game";
+import TetrisGame from "@/components/games/tetris-game";
 
 const Page = () => {
     return (

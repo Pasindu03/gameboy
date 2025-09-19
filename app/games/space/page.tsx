@@ -1,5 +1,5 @@
 import React from 'react';
-import SpaceInvadersGame from "@/components/space-invaders-game";
+import SpaceInvadersGame from "@/components/games/space-invaders-game";
 
 const Page = () => {
     return (

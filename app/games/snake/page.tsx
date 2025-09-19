@@ -1,5 +1,5 @@
 import React from 'react';
-import SnakeGame from "@/components/snake-game";
+import SnakeGame from "@/components/games/snake-game";
 
 const Page = () => {
     return (

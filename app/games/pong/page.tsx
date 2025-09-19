@@ -1,5 +1,5 @@
 import React from 'react';
-import PongGame from "@/components/pong-game";
+import PongGame from "@/components/games/pong-game";
 
 const Page = () => {
     return (

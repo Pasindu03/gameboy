@@ -332,7 +332,7 @@ export default function SpaceInvadersGame() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
-          <Link href="/">
+          <Link href="/public">
             <Button
               variant="outline"
               size="sm"
