@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Play, Pause, RotateCcw, Home } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 type Direction = "UP" | "DOWN" | "LEFT" | "RIGHT"
 type Position = { x: number; y: number }
@@ -241,7 +242,7 @@ export default function SnakeGame() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
-          <Link href="/">
+          <Link href="/public">
             <Button
               variant="outline"
               size="sm"
@@ -286,25 +287,88 @@ export default function SnakeGame() {
                   )}
                 </div>
 
-                {/* Snake */}
-                {snake.map((segment, index) => (
-                  <div
-                    key={index}
-                    className={`absolute ${
-                      index === 0 ? "bg-green-300 border-2 border-green-100" : "bg-green-500 border border-green-300"
-                    } transition-all duration-75`}
-                    style={{
-                      left: `${segment.x * 20}px`,
-                      top: `${segment.y * 20}px`,
-                      width: "20px",
-                      height: "20px",
-                    }}
-                  />
-                ))}
+                {snake.map((segment, index) => {
+                  let rotation = 0;
+
+                  // Head rotation comes from current direction
+                  if (index === 0) {
+                    switch (direction) {
+                      case "UP":
+                        rotation = 0;
+                        break;
+                      case "DOWN":
+                        rotation = 180;
+                        break;
+                      case "LEFT":
+                        rotation = -90;
+                        break;
+                      case "RIGHT":
+                        rotation = 90;
+                        break;
+                    }
+                  } else {
+                    // Body or Tail rotation comes from relative position to previous segment
+                    const prev = snake[index - 1];
+                    if (prev) {
+                      const dx = segment.x - prev.x;
+                      const dy = segment.y - prev.y;
+
+                      if (dx === 1) rotation = 90; // right
+                      else if (dx === -1) rotation = -90; // left
+                      else if (dy === 1) rotation = 180; // down
+                      else if (dy === -1) rotation = 0; // up
+                    }
+                  }
+
+                  return (
+                      <div
+                          key={index}
+                          className="absolute transition-all duration-75"
+                          style={{
+                            left: `${segment.x * 20}px`,
+                            top: `${segment.y * 20}px`,
+                            width: "20px",
+                            height: "20px",
+                          }}
+                      >
+                        {index === 0 ? (
+                            // Head
+                            <Image
+                                src="/head.png"
+                                alt="Snake Head"
+                                width={20}
+                                height={20}
+                                className="w-full h-full"
+                                style={{ transform: `rotate(${rotation}deg)` }}
+                            />
+                        ) : index === snake.length - 1 ? (
+                            // Tail
+                            <Image
+                                src="/tail.png"
+                                alt="Snake Tail"
+                                width={20}
+                                height={20}
+                                className="w-full h-full"
+                                style={{ transform: `rotate(${rotation}deg)` }}
+                            />
+                        ) : (
+                            // Body
+                            <Image
+                                src="/body.png"
+                                alt="Snake Body"
+                                width={20}
+                                height={20}
+                                className="w-full h-full"
+                                style={{ transform: `rotate(${rotation}deg)` }}
+                            />
+                        )}
+                      </div>
+                  );
+                })}
 
                 {/* Food */}
                 <div
-                  className="absolute bg-red-500 border-2 border-red-300 animate-pulse"
+                  className="absolute bg-red-500 rounded-2xl border-2 border-red-300 animate-pulse"
                   style={{
                     left: `${food.x * 20}px`,
                     top: `${food.y * 20}px`,
