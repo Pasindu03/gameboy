@@ -44,7 +44,7 @@ const games = [
         year: "1980",
     },
     {
-        id: "invaders",
+        id: "space",
         name: "SPACE INVADERS",
         description: "Defend Earth from alien invasion",
         icon: "👾",
@@ -56,7 +56,7 @@ const games = [
         year: "1978",
     },
     {
-        id: "asteroids",
+        id: "asteroid",
         name: "ASTEROIDS",
         description: "Navigate space and destroy asteroids",
         icon: "🚀",
