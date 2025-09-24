@@ -84,9 +84,9 @@ const games = [
 
 const stats = [
   { icon: Gamepad2, label: "Games Available", value: "6+" },
-  { icon: Users, label: "Players Online", value: "1,337" },
-  { icon: Trophy, label: "High Scores", value: "∞" },
-  { icon: Zap, label: "Arcade Power", value: "9000%" },
+  { icon: Users, label: "Players Online", value: "5" },
+  { icon: Trophy, label: "High Scores", value: "Get Yours Now" },
+  { icon: Zap, label: "Arcade Power", value: "100%" },
 ]
 
 export default function RetroGameHome() {

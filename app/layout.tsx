@@ -1,29 +1,34 @@
 import type { Metadata } from "next";
-import {Press_Start_2P} from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const pressStart2P = Press_Start_2P({
-    weight: "400",
+const geistSans = Geist({
+    variable: "--font-geist-sans",
+    subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+    variable: "--font-geist-mono",
     subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Gameboy",
-  description: "Made for all gamer boys",
+    title: "Gameboy",
+    description: "Made for all gamer boys",
 };
 
 export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
+                                       children,
+                                   }: Readonly<{
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body
-        className={pressStart2P.className}
-      >
+    return (
+        <html lang="en">
+        <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
         {children}
-      </body>
-    </html>
-  );
+        </body>
+        </html>
+    );
 }
